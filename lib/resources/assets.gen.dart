@@ -343,6 +343,10 @@ class $LibResourcesImagesGen {
   AssetGenImage get userPlaceholder =>
       const AssetGenImage('lib/resources/images/user_placeholder.png');
 
+  /// File path: lib/resources/images/whatsapp.png
+  AssetGenImage get whatsapp =>
+      const AssetGenImage('lib/resources/images/whatsapp.png');
+
   /// List of all assets
   List<dynamic> get values => [
         icApprovalSecondary,
@@ -429,7 +433,8 @@ class $LibResourcesImagesGen {
         lottieFailed,
         lottieSuccess,
         lottieWarning,
-        userPlaceholder
+        userPlaceholder,
+        whatsapp
       ];
 }
 

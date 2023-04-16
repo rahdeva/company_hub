@@ -1,3 +1,4 @@
+import 'package:company_hub/feature/pegawai/pegawai_controller.dart';
 import 'package:company_hub/utills/widget/app_bar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,209 +13,125 @@ class PegawaiPage extends StatefulWidget {
 }
 
 class _PegawaiPageState extends State<PegawaiPage> {
-  DateTime selectedDay = DateTime.now();
-  DateTime focusedDay = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget.primaryAppbar(
-          context: context, titleString: 'txt_menu_my_employee'.tr),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            calendarWidget(context),
-            const employeeListWidget(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Container calendarWidget(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: TableCalendar(
-        daysOfWeekVisible: true,
-        calendarFormat: CalendarFormat.week,
-        onDaySelected: (DateTime selectDay, DateTime focusDay) {
-          setState(() {
-            selectedDay = selectDay;
-            focusedDay = focusDay;
-          });
-        },
-        selectedDayPredicate: (DateTime date) {
-          return isSameDay(selectedDay, date);
-        },
-        firstDay: DateTime(1990),
-        lastDay: DateTime(2050),
-        focusedDay: DateTime.now(),
-        startingDayOfWeek: StartingDayOfWeek.sunday,
-        headerStyle: HeaderStyle(
-          formatButtonVisible: false,
-          titleCentered: true,
-          titleTextStyle: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                color: AppColors.textColour90,
-              ),
-        ),
-        calendarStyle: CalendarStyle(
-          todayTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Colors.white,
-              ),
-          defaultTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Colors.black,
-              ),
-          weekendTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Colors.black,
-              ),
-          isTodayHighlighted: true,
-          defaultDecoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
+    return GetBuilder<PegawaiController>(
+      builder: (controller) {
+        return Scaffold(
+          appBar: AppBarWidget.primaryAppbar(
+            context: context, 
+            titleString: 'Pegawai'
           ),
-          selectedDecoration: BoxDecoration(
-              color: AppColors.colorPrimary,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(8)),
-          todayDecoration: BoxDecoration(
-              color: AppColors.textColour30,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(8)),
-          weekendDecoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(8)),
-          selectedTextStyle: const TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-}
-
-class employeeListWidget extends StatelessWidget {
-  const employeeListWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: employeeData.length,
-      itemBuilder: (BuildContext context, int index) {
-        return EmployeeTiles(
-            profilePict: employeeData[index].profilePict,
-            name: employeeData[index].name,
-            absent: employeeData[index].absent,
-            location: employeeData[index].location,
-            time: employeeData[index].time);
-      },
-    );
-  }
-}
-
-class Employee {
-  final profilePict;
-  final String name, location, time;
-  final bool absent;
-
-  Employee(
-      {required this.profilePict,
-      required this.name,
-      required this.absent,
-      required this.location,
-      required this.time});
-}
-
-final List<Employee> employeeData = [
-  Employee(
-      name: "Grandi Ekabuana",
-      profilePict: AppImages.imgDummyProfile.image().image,
-      absent: false,
-      location: "WFH",
-      time: "8:28 AM - 6:30 PM"),
-  Employee(
-      name: "Grandi Ekabuana",
-      profilePict: AppImages.imgDummyProfile.image().image,
-      absent: true,
-      location: "-",
-      time: "-")
-];
-
-class EmployeeTiles extends StatelessWidget {
-  const EmployeeTiles({
-    super.key,
-    required this.profilePict,
-    required this.name,
-    required this.absent,
-    required this.location,
-    required this.time,
-  });
-
-  final profilePict;
-  final String name, location, time;
-  final bool absent;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: profilePict),
-                    borderRadius: const BorderRadius.all(Radius.circular(100))),
-              ),
-              const SizedBox(
-                width: 24,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name, style: Theme.of(context).textTheme.titleLarge!),
-                  Text(
-                    absent ? "Tidak Masuk" : "Masuk",
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: absent ? AppColors.danger : AppColors.success,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: controller.employeeData.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final pegawai = controller.employeeData[index];
+                  return Container(
+                    color: AppColors.white,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                image: DecorationImage(
+                                  image: pegawai.profilePict
+                                )
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  pegawai.name,
+                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: AppColors.textColour80
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  pegawai.department,
+                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: AppColors.colorSecondary
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  pegawai.division,
+                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: AppColors.colorTertiary
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                  ),
-                  Text(
-                    location,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: AppColors.colorSecondary,
-                        ),
-                  ),
-                  Text(
-                    time,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: AppColors.colorSecondary,
-                        ),
-                  ),
-                ],
-              )
-            ],
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                controller.call(phoneNumber: pegawai.phoneNumber);
+                              },
+                              child: const Icon(
+                                Icons.call,
+                                size: 20,
+                                color: AppColors.colorSecondary,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            InkWell(
+                              onTap: (){
+                                controller.email(email: pegawai.email);
+                              },
+                              child: const Icon(
+                                Icons.mail_rounded,
+                                size: 20,
+                                color: AppColors.colorSecondary,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            InkWell(
+                              onTap: (){
+                                controller.whatsapp(whatsappNumber: pegawai.whatsappNumber);
+                              },
+                              child: AppImages.whatsapp.image(
+                                width: 20,
+                                color: AppColors.colorSecondary,
+                              )
+                            ),
+                          ],
+                        )
+                      ]),
+                  );
+                })
+            ),
           ),
-          Row(
-            children: const [
-              Icon(
-                Icons.call,
-                color: AppColors.colorSecondary,
-              ),
-              SizedBox(
-                width: 16,
-              ),
-              Icon(
-                Icons.mail_rounded,
-                color: AppColors.colorSecondary,
-              ),
-            ],
-          )
-        ],
-      ),
+        );
+      }
     );
   }
 }

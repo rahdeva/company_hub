@@ -10,6 +10,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: Poppins
-  static const String poppins = 'Poppins';
+  /// Font family: Montserrat
+  static const String montserrat = 'Montserrat';
 }

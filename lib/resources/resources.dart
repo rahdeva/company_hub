@@ -118,7 +118,7 @@ class AppGradient {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: <Color>[
-      AppColors.colorPrimary.withOpacity(0.5),
+      AppColors.colorPrimary2.withOpacity(0.5),
       AppColors.colorPrimary,
     ],
   );

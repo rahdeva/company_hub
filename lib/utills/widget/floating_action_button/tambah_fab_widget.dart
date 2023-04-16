@@ -2,8 +2,8 @@ import 'package:company_hub/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RequestFloatingActionButton extends StatelessWidget {
-  const RequestFloatingActionButton({
+class TambahFloatingActionButton extends StatelessWidget {
+  const TambahFloatingActionButton({
     super.key, 
     required this.onTap,
   });
@@ -19,9 +19,8 @@ class RequestFloatingActionButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           boxShadow: [AppElevation.elevation7px],
-          color: AppColors.colorPrimary
+          color: AppColors.colorTertiary
         ),
-        margin: const EdgeInsets.only(right: 8, bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Wrap(
           alignment: WrapAlignment.center,
@@ -33,7 +32,7 @@ class RequestFloatingActionButton extends StatelessWidget {
               color: AppColors.white,
             ),
             Text(
-              "txt_general_request".tr,
+              "Tambah".tr,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: AppColors.white
               ),

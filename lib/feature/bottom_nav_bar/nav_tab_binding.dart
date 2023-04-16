@@ -1,4 +1,4 @@
-import 'package:company_hub/feature/bottom_nav_bar%20copy/nav_tab_controller.dart';
+import 'package:company_hub/feature/bottom_nav_bar/nav_tab_controller.dart';
 import 'package:company_hub/feature/login/login_controller.dart';
 import 'package:company_hub/feature/pegawai/pegawai_controller.dart';
 import 'package:company_hub/feature/penghasilan/penghasilan_controller.dart';

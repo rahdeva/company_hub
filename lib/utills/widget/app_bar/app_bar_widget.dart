@@ -75,6 +75,8 @@ class AppBarWidget{
     bool withFilter = false,
     Function()? filterOnPressed,
     bool withSearch = false,
+    bool withAdd = false,
+    Function()? addOnPressed,
     Widget? searchResultWidget,
   }) {
     return AppBar(
@@ -124,6 +126,19 @@ class AppBarWidget{
                 color: AppColors.textColour80
               ),
               onPressed: filterOnPressed
+            ),
+          ),
+        ),
+        Visibility(
+          visible: withAdd,
+          child: Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              icon: const Icon(
+                IconlyBold.addUser,
+                color: AppColors.textColour80
+              ),
+              onPressed: addOnPressed
             ),
           ),
         ),

@@ -24,7 +24,7 @@ class FloatingSubmitButton extends StatelessWidget {
         boxShadow: [AppElevation.elevation4px]
       ),
       child: PrimaryButton(
-        title: textButton ?? "txt_button_submit_request".tr,
+        title: textButton ?? "Submit",
         onPressed: onPressed
       ),
     );

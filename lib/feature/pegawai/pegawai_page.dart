@@ -1,5 +1,7 @@
 import 'package:company_hub/feature/pegawai/pegawai_controller.dart';
+import 'package:company_hub/routes/page_names.dart';
 import 'package:company_hub/utills/widget/app_bar/app_bar_widget.dart';
+import 'package:company_hub/utills/widget/floating_action_button/tambah_fab_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/resources/resources.dart';
@@ -20,7 +22,7 @@ class _PegawaiPageState extends State<PegawaiPage> {
         return Scaffold(
           appBar: AppBarWidget.primaryAppbar(
             context: context, 
-            titleString: 'Pegawai'
+            titleString: 'Pegawai',
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -129,6 +131,11 @@ class _PegawaiPageState extends State<PegawaiPage> {
                   );
                 })
             ),
+          ),
+          floatingActionButton: TambahFloatingActionButton(
+            onTap: (){
+              Get.toNamed(PageName.TAMBAH_PEGAWAI);
+            }
           ),
         );
       }

@@ -11,6 +11,8 @@ class PageName {
   static const PEGAWAI = "/pegawai";
   static const TAMBAH_PEGAWAI = "/tambah-pegawai";
   static const PENGHASILAN = "/penghasilan"; 
+  static const EDIT_PENGHASILAN_1 = "/edit-penghasilan-1"; 
+  static const EDIT_PENGHASILAN_2 = "/edit-penghasilan-2"; 
   static const DATA_PENGHASILAN_PEGAWAI = "/data-penghasilan-pegawai"; 
   static const PENGHASILAN_PEGAWAI = "/penghasilan-pegawai"; 
   static const EDIT_PENGHASILAN_PEGAWAI_1 = "/edit-penghasilan-pegawai-1"; 

@@ -1,5 +1,6 @@
 import 'package:company_hub/resources/resources.dart';
 import 'package:company_hub/routes/page_names.dart';
+import 'package:company_hub/utills/helper/helper.dart';
 import 'package:company_hub/utills/widget/snackbar/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -14,9 +15,17 @@ class LoginController extends GetxController {
 
   void loginWithEmail(String username, String password){
     if(
-      username == "admin" &&
-      password == "12345"
+      (
+        username == "admin" &&
+        password == "12345"
+      ) 
+      || 
+      (
+        username == "pegawai" &&
+        password == "12345"
+      ) 
     ){
+      AuthHelper().setAuth(username);
       Get.offAllNamed(PageName.NAVTAB);
     } else{
       SnackbarWidget.defaultSnackbar(

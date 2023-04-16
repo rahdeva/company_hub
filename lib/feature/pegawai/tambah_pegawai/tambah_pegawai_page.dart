@@ -24,7 +24,7 @@ class TambahPegawaiPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBarWidget.secondaryAppbar(
             context: context,
-            titleString: 'Tambah Tugas',
+            titleString: 'Tambah Pegawai',
           ),
           body: FormBuilder(
             key: controller.formKey,

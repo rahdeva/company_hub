@@ -5,6 +5,10 @@ import 'package:company_hub/feature/pegawai/tambah_pegawai/tambah_pegawai_bindin
 import 'package:company_hub/feature/pegawai/tambah_pegawai/tambah_pegawai_page.dart';
 import 'package:company_hub/feature/penghasilan/data_penghasilan_pegawai/data_penghasilan_pegawai_binding.dart';
 import 'package:company_hub/feature/penghasilan/data_penghasilan_pegawai/data_penghasilan_pegawai_page.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_1/edit_penghasilan_1_binding.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_1/edit_penghasilan_1_page.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_2/edit_penghasilan_2_binding.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_2/edit_penghasilan_2_page.dart';
 import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_1/edit_penghasilan_pegawai_1_binding.dart';
 import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_1/edit_penghasilan_pegawai_1_page.dart';
 import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_2/edit_penghasilan_pegawai_2_binding.dart';
@@ -77,6 +81,16 @@ class PageRoutes {
     GetPage(
       name: PageName.PENGHASILAN, 
       page: () => const PenghasilanPage()
+    ),
+    GetPage(
+      name: PageName.EDIT_PENGHASILAN_1, 
+      page: () => const EditPenghasilan1Page(),
+      binding: EditPenghasilan1Binding()
+    ),
+    GetPage(
+      name: PageName.EDIT_PENGHASILAN_2, 
+      page: () => const EditPenghasilan2Page(),
+      binding: EditPenghasilan2Binding()
     ),
     GetPage(
       name: PageName.DATA_PENGHASILAN_PEGAWAI, 

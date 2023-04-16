@@ -1,15 +1,9 @@
-import 'package:company_hub/feature/penghasilan/data_penghasilan_pegawai/data_penghasilan_pegawai_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
-class PenghasilanPegawaiController extends GetxController {
-  late final Employee employeeData;
-
-  @override
-  void onInit() {
-    employeeData = Get.arguments;
-    super.onInit();
-  }
-  
+class EditPenghasilan1Controller extends GetxController {
+  final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
   final Penghasilan penghasilan = Penghasilan(
     gajiPokok: "7.000.000", 
     tunjanganJabatan: "1.000.000", 

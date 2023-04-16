@@ -1,6 +1,7 @@
 import 'package:company_hub/feature/tugas/tugas_controller.dart';
 import 'package:company_hub/resources/resources.dart';
 import 'package:company_hub/routes/page_names.dart';
+import 'package:company_hub/utills/helper/helper.dart';
 import 'package:company_hub/utills/widget/app_bar/app_bar_widget.dart';
 import 'package:company_hub/utills/widget/floating_action_button/tambah_fab_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +22,19 @@ class _TugasPageState extends State<TugasPage> {
     return GetBuilder<TugasController>(
       builder: (controller) {
         return Scaffold(
-          appBar: AppBarWidget.primaryAppbar(
-            context: context, 
-            titleString: 'Tugas',
-            withAdd: true,
-            addOnPressed: (){
-              Get.toNamed(PageName.DATA_TUGAS_PEGAWAI);
-            }
-          ),
+          appBar: controller.userType == "Admin"
+          ? AppBarWidget.primaryAppbar(
+              context: context, 
+              titleString: 'Tugas',
+              withAdd: true,
+              addOnPressed: (){
+                Get.toNamed(PageName.DATA_TUGAS_PEGAWAI);
+              }
+            )
+          : AppBarWidget.primaryAppbar(
+              context: context, 
+              titleString: 'Tugas',
+            ),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -324,11 +330,13 @@ class _TugasPageState extends State<TugasPage> {
               ],
             ),
           ),
-          floatingActionButton: TambahFloatingActionButton(
-            onTap: (){
-              Get.toNamed(PageName.TAMBAH_TUGAS);
-            }
-          ),
+          floatingActionButton: controller.userType == "Admin"
+          ? TambahFloatingActionButton(
+              onTap: (){
+                Get.toNamed(PageName.TAMBAH_TUGAS);
+              }
+            )
+          : const SizedBox()
         );
       }
     );

@@ -132,11 +132,13 @@ class _PegawaiPageState extends State<PegawaiPage> {
                 })
             ),
           ),
-          floatingActionButton: TambahFloatingActionButton(
-            onTap: (){
-              Get.toNamed(PageName.TAMBAH_PEGAWAI);
-            }
-          ),
+          floatingActionButton: controller.userType == "Admin"
+          ? TambahFloatingActionButton(
+              onTap: (){
+                Get.toNamed(PageName.TAMBAH_PEGAWAI);
+              }
+            )
+          : const SizedBox()
         );
       }
     );

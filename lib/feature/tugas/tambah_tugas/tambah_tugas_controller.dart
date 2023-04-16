@@ -6,4 +6,6 @@ class TambahTugasController extends GetxController {
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
   
   String? dropdownResult;
+
+  final List<String> listProject = const ['Project 1', 'Project 2', 'Project 3'];
 }

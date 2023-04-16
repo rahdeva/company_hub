@@ -1,8 +1,10 @@
 import 'package:company_hub/resources/resources.dart';
+import 'package:company_hub/utills/helper/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PegawaiController extends GetxController {
+  String userType = AuthHelper().getUserType();
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 

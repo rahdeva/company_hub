@@ -1,5 +1,6 @@
 
-import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_2/edit_penghasilan_pegawai_2_controller.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_2/edit_penghasilan_2_controller.dart';
+import 'package:company_hub/resources/resources.dart';
 import 'package:company_hub/utills/helper/validator.dart';
 import 'package:company_hub/utills/widget/app_bar/app_bar_widget.dart';
 import 'package:company_hub/utills/widget/floating_action_button/floating_submit_button.dart';
@@ -10,20 +11,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
-import '../../../resources/resources.dart';
-
-class EditPenghasilanPegawai2Page extends StatelessWidget {
-  const EditPenghasilanPegawai2Page({super.key});
+class EditPenghasilan2Page extends StatelessWidget {
+  const EditPenghasilan2Page({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EditPenghasilanPegawai2Controller>(
+    return GetBuilder<EditPenghasilan2Controller>(
       builder: (controller) {
         final potongan = controller.potongan;
         return Scaffold(
           appBar: AppBarWidget.secondaryAppbar(
             context: context,
-            titleString: 'Edit Data Penghasilan Pegawai',
+            titleString: 'Edit Data Penghasilan',
           ),
           body: FormBuilder(
             key: controller.formKey,

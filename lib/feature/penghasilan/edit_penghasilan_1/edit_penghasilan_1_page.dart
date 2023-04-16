@@ -1,5 +1,7 @@
 
-import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_2/edit_penghasilan_pegawai_2_controller.dart';
+import 'package:company_hub/feature/penghasilan/edit_penghasilan_1/edit_penghasilan_1_controller.dart';
+import 'package:company_hub/resources/resources.dart';
+import 'package:company_hub/routes/page_names.dart';
 import 'package:company_hub/utills/helper/validator.dart';
 import 'package:company_hub/utills/widget/app_bar/app_bar_widget.dart';
 import 'package:company_hub/utills/widget/floating_action_button/floating_submit_button.dart';
@@ -10,20 +12,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
-import '../../../resources/resources.dart';
-
-class EditPenghasilanPegawai2Page extends StatelessWidget {
-  const EditPenghasilanPegawai2Page({super.key});
+class EditPenghasilan1Page extends StatelessWidget {
+  const EditPenghasilan1Page({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EditPenghasilanPegawai2Controller>(
+    return GetBuilder<EditPenghasilan1Controller>(
       builder: (controller) {
-        final potongan = controller.potongan;
+        final penghasilan = controller.penghasilan;
         return Scaffold(
           appBar: AppBarWidget.secondaryAppbar(
             context: context,
-            titleString: 'Edit Data Penghasilan Pegawai',
+            titleString: 'Edit Data Penghasilan',
           ),
           body: FormBuilder(
             key: controller.formKey,
@@ -34,7 +34,7 @@ class EditPenghasilanPegawai2Page extends StatelessWidget {
                   children: [
                     const SizedBox(height: 24), 
                     Text(
-                      "POTONGAN",
+                      "PENGHASILAN",
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w700,
                         color: AppColors.colorPrimary
@@ -42,52 +42,72 @@ class EditPenghasilanPegawai2Page extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     const LabelFormWidget(
-                      labelText: "BPJS Kesehatan",
+                      labelText: "Gaji Pokok",
                     ),
                     TextFieldWidget(
-                      name: 'bpjs-kesehatan',
-                      hintText: 'BPJS Kesehatan',
-                      initialValue: potongan.bpjsKesehatan,
+                      name: 'gaji-pokok',
+                      hintText: 'Gaji Pokok',
+                      initialValue: penghasilan.gajiPokok,
                       validator: Validator.required(),
                     ),
                     const SizedBox(height: 16),
                     const LabelFormWidget(
-                      labelText: "BPJS Naker",
+                      labelText: "Tunjangan Jabatan",
                     ),
                     TextFieldWidget(
-                      name: 'bpjs-naker',
-                      hintText: 'BPJS Naker',
-                      initialValue: potongan.bpjsNaker,
+                      name: 'tunjangan-jabatan',
+                      hintText: 'Tunjangan Jabatan',
+                      initialValue: penghasilan.tunjanganJabatan,
                       validator: Validator.required(),
                     ),
                     const SizedBox(height: 16),
                     const LabelFormWidget(
-                      labelText: "PPh 21",
+                      labelText: "Tunjangan BPJS Kesehatan",
                     ),
                     TextFieldWidget(
-                      name: 'pph-21',
-                      hintText: 'PPh 21',
-                      initialValue: potongan.pph21,
+                      name: 'tunjangan-bpjs-kesehatan',
+                      hintText: 'Tunjangan BPJS Kesehatan',
+                      initialValue: penghasilan.tunjanganBPJSKesehatan,
                       validator: Validator.required(),
                     ),
                     const SizedBox(height: 16),
                     const LabelFormWidget(
-                      labelText: "Cicilan Pinjaman",
+                      labelText: "Tunjangan BPJS Naker",
                     ),
                     TextFieldWidget(
-                      name: 'cicilan-pinjaman',
-                      hintText: 'Cicilan Pinjaman',
-                      initialValue: potongan.cicilanPinjaman,
+                      name: 'tunjangan-bpjs-naker',
+                      hintText: 'Tunjangan BPJS Naker',
+                      initialValue: penghasilan.tunjanganBPJSNaker,
                       validator: Validator.required(),
                     ),
                     const SizedBox(height: 16),
                     const LabelFormWidget(
-                      labelText: "Total (B)",
+                      labelText: "Lembur",
                     ),
                     TextFieldWidget(
-                      name: 'total-b',
-                      hintText: 'Total (B)',
-                      initialValue: controller.getTotalB(),
+                      name: 'lembur',
+                      hintText: 'Lembur',
+                      initialValue: penghasilan.lembur,
+                      validator: Validator.required(),
+                    ),
+                    const SizedBox(height: 16),
+                    const LabelFormWidget(
+                      labelText: "Bonus",
+                    ),
+                    TextFieldWidget(
+                      name: 'bonus',
+                      hintText: 'Bonus',
+                      initialValue: penghasilan.bonus,
+                      validator: Validator.required(),
+                    ),
+                    const SizedBox(height: 16),
+                    const LabelFormWidget(
+                      labelText: "Total (A)",
+                    ),
+                    TextFieldWidget(
+                      name: 'total-a',
+                      hintText: 'Total (A)',
+                      initialValue: controller.getTotalA(),
                       enabled: false,
                       validator: Validator.required(),
                     ),
@@ -110,17 +130,13 @@ class EditPenghasilanPegawai2Page extends StatelessWidget {
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingSubmitButton(
+            textButton: "Next",
             onPressed: (){
               if(
                 controller.formKey.currentState != null &&
                 controller.formKey.currentState!.saveAndValidate()
               ){
-                PopUpWidget.successAndFailPopUp(
-                  context: context, 
-                  titleString: "Success!", 
-                  middleText: "Data Penghasilan Pegawai berhasil diperbaharui", 
-                  buttonText: "OK"
-                );
+                Get.toNamed(PageName.EDIT_PENGHASILAN_2);
               }
             },
           ),

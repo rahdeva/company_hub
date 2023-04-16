@@ -1,6 +1,9 @@
+import 'package:company_hub/utills/helper/helper.dart';
 import 'package:get/get.dart';
 
 class TugasController extends GetxController {
+  String userType = AuthHelper().getUserType();
+
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 

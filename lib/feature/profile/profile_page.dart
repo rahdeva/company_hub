@@ -1,8 +1,6 @@
 import 'package:company_hub/resources/resources.dart';
-import 'package:company_hub/routes/page_names.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:sizer/sizer.dart';
-
 import '/feature/profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

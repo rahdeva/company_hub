@@ -258,9 +258,9 @@ class _TugasPageState extends State<TugasPage> {
                                 controller.unDoneTask(taskListDone);
                               },
                               child: const Icon(
-                                Icons.circle_outlined,
+                                Icons.check_circle,
                                 size: 24,
-                                color: AppColors.textColour80,
+                                color: AppColors.success,
                               ),
                             ),
                             const SizedBox(width: 16),

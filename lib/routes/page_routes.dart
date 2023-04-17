@@ -1,5 +1,7 @@
 import 'package:company_hub/feature/bottom_nav_bar/nav_tab_binding.dart';
 import 'package:company_hub/feature/bottom_nav_bar/nav_tab_page.dart';
+import 'package:company_hub/feature/login/login_binding.dart';
+import 'package:company_hub/feature/login/login_page.dart';
 import 'package:company_hub/feature/pegawai/pegawai_page.dart';
 import 'package:company_hub/feature/pegawai/tambah_pegawai/tambah_pegawai_binding.dart';
 import 'package:company_hub/feature/pegawai/tambah_pegawai/tambah_pegawai_page.dart';
@@ -16,6 +18,7 @@ import 'package:company_hub/feature/penghasilan/edit_penghasilan_pegawai_2/edit_
 import 'package:company_hub/feature/penghasilan/penghasilan_page.dart';
 import 'package:company_hub/feature/penghasilan/penghasilan_pegawai/penghasilan_pegawai_binding.dart';
 import 'package:company_hub/feature/penghasilan/penghasilan_pegawai/penghasilan_pegawai_page.dart';
+import 'package:company_hub/feature/profile/profile_page.dart';
 import 'package:company_hub/feature/tugas/data_tugas_pegawai/data_tugas_pegawai_binding.dart';
 import 'package:company_hub/feature/tugas/data_tugas_pegawai/data_tugas_pegawai_page.dart';
 import 'package:company_hub/feature/tugas/tambah_tugas/tambah_tugas_binding.dart';
@@ -25,12 +28,7 @@ import 'package:company_hub/feature/tugas/tambah_tugas_pegawai/tambah_tugas_pega
 import 'package:company_hub/feature/tugas/tugas_page.dart';
 import 'package:company_hub/feature/tugas/tugas_pegawai/tugas_pegawai_binding.dart';
 import 'package:company_hub/feature/tugas/tugas_pegawai/tugas_pegawai_page.dart';
-
-import '/feature/profile/profile_page.dart';
 import 'package:get/get.dart';
-import '/feature/login/login_binding.dart';
-import '/feature/login/login_page.dart';
-
 import 'page_names.dart';
 
 class PageRoutes {
